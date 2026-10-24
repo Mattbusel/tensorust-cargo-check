@@ -27856,7 +27856,7 @@ function table(head, rows) {
   if (rows.length > shown.length) s += `\n_...and ${rows.length - shown.length} more._\n`;
   return s;
 }
-const fold = (title, body, open) => `<details${open ? ' open' : ''}><summary><b>${title}</b></summary>\n\n${body}\n</details>\n`;
+const fold = (title, body, open) => `<details${open ? ' open' : ''}><summary><b>${title}</b></summary>\n\n${body}\n</details>\n\n`;
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many || one + 's'}`;
 
 function headline(r) {
