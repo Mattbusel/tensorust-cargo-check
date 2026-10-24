@@ -1,0 +1,45 @@
+name: 'Tensorust Cargo Check'
+description: 'One PR comment for every Cargo.lock change: security advisories, yanked and outdated crates, licenses, MSRV, new dependencies.'
+author: 'Tensorust'
+branding:
+  icon: 'shield'
+  color: 'orange'
+inputs:
+  github-token:
+    description: 'Token used to read the pull request and post the comment. Needs pull-requests: write.'
+    required: false
+    default: ${{ github.token }}
+  fail-on:
+    description: 'Fail the check on any of: advisories, yanked, unmaintained, copyleft (comma separated). Default: never fail.'
+    required: false
+    default: ''
+  license-key:
+    description: 'License key for private repos ($9 a month per repo, https://shop.tensorust.com/dev/cargo-check). Public repos need none.'
+    required: false
+    default: ''
+  lockfile:
+    description: 'Path to the Cargo.lock to check. Default: every Cargo.lock the PR changes, plus the nearest one above each changed Cargo.toml.'
+    required: false
+    default: ''
+  max-api-calls:
+    description: 'Most crates.io API calls for licenses of crates outside the 1,000 most used (one a second, as crates.io asks).'
+    required: false
+    default: '60'
+  comment:
+    description: 'Set to false to skip the PR comment and only write the job summary.'
+    required: false
+    default: 'true'
+outputs:
+  advisories:
+    description: 'Number of security advisories (not counting unmaintained or unsound notices).'
+  yanked:
+    description: 'Number of yanked versions in the lock file.'
+  behind:
+    description: 'Number of crates a breaking release behind.'
+  new-dependencies:
+    description: 'Number of packages new in Cargo.lock compared with the base branch.'
+  summary:
+    description: 'One-line summary, e.g. "1 security advisory, 2 a breaking release behind".'
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

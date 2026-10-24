@@ -1,0 +1,22 @@
+{
+  "name": "tensorust-cargo-check",
+  "version": "1.0.0",
+  "description": "GitHub Action: one pull request comment with security advisories, yanked and outdated crates, licenses, MSRV and new dependencies for every Cargo.lock change.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt",
+    "test": "node --test"
+  },
+  "keywords": ["rust", "cargo", "github-action", "security", "rustsec", "osv", "cargo-audit", "dependencies"],
+  "author": "Tensorust (https://tensorust.com)",
+  "license": "MIT",
+  "homepage": "https://tensorust.com/tools/cargo-check-action/",
+  "repository": { "type": "git", "url": "https://github.com/Mattbusel/tensorust-cargo-check" },
+  "dependencies": {
+    "@actions/core": "1.11.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.38.3"
+  }
+}
