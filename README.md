@@ -129,8 +129,8 @@ Use the result in a later step:
 | `max-api-calls` | `60` | Licenses for the 1,000 most-used crates come from a table we publish; others cost one crates.io API call each, one a second as crates.io asks. |
 | `comment` | `true` | `false` writes only the job summary. |
 
-| `fix` | On scheduled or manual runs: upgrade vulnerable or yanked crates inside your requirements, test, open one pull request. | `false` |
-| `test-command` | Command fix mode runs to test the upgrades. | `cargo test` |
+| `fix` | `false` | On scheduled or manual runs: upgrade vulnerable or yanked crates inside your requirements, test, open one pull request. |
+| `test-command` | `cargo test` | Command fix mode runs to test the upgrades. |
 
 ## Outputs
 
